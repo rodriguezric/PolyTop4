@@ -1,0 +1,210 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scripts/Screens.gd" type="Script" id=1]
+
+[node name="Screens" type="CanvasLayer"]
+script = ExtResource( 1 )
+
+[node name="LoseScreen" type="ColorRect" parent="."]
+visible = false
+margin_right = 512.0
+margin_bottom = 300.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color( 1, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="LoseScreen"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="LoseScreen/CenterContainer"]
+margin_left = 224.0
+margin_top = 143.0
+margin_right = 288.0
+margin_bottom = 157.0
+text = "YOU LOSE"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LoseScreen"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="LoseScreen/VBoxContainer"]
+margin_right = 512.0
+margin_bottom = 148.0
+mouse_filter = 2
+size_flags_vertical = 3
+
+[node name="CenterContainer2" type="CenterContainer" parent="LoseScreen/VBoxContainer"]
+margin_top = 152.0
+margin_right = 512.0
+margin_bottom = 300.0
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LoseScreen/VBoxContainer/CenterContainer2"]
+margin_left = 210.0
+margin_top = 40.0
+margin_right = 301.0
+margin_bottom = 108.0
+
+[node name="TryAgainButton" type="Button" parent="LoseScreen/VBoxContainer/CenterContainer2/VBoxContainer"]
+margin_right = 91.0
+margin_bottom = 20.0
+text = "TRY AGAIN"
+
+[node name="MenuButton" type="Button" parent="LoseScreen/VBoxContainer/CenterContainer2/VBoxContainer"]
+margin_top = 24.0
+margin_right = 91.0
+margin_bottom = 44.0
+text = "MAIN MENU"
+
+[node name="QuitButton" type="Button" parent="LoseScreen/VBoxContainer/CenterContainer2/VBoxContainer"]
+margin_top = 48.0
+margin_right = 91.0
+margin_bottom = 68.0
+text = "QUIT"
+
+[node name="WinScreen" type="ColorRect" parent="."]
+visible = false
+margin_right = 512.0
+margin_bottom = 300.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color( 0, 0, 1, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="WinScreen"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="WinScreen/CenterContainer"]
+margin_left = 224.0
+margin_top = 143.0
+margin_right = 288.0
+margin_bottom = 157.0
+text = "YOU LOSE"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="WinScreen"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="WinScreen/VBoxContainer"]
+margin_right = 512.0
+margin_bottom = 148.0
+mouse_filter = 2
+size_flags_vertical = 3
+
+[node name="CenterContainer2" type="CenterContainer" parent="WinScreen/VBoxContainer"]
+margin_top = 152.0
+margin_right = 512.0
+margin_bottom = 300.0
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="WinScreen/VBoxContainer/CenterContainer2"]
+margin_left = 230.0
+margin_top = 52.0
+margin_right = 281.0
+margin_bottom = 96.0
+
+[node name="MenuButton" type="Button" parent="WinScreen/VBoxContainer/CenterContainer2/VBoxContainer"]
+margin_right = 51.0
+margin_bottom = 20.0
+text = "MENU"
+
+[node name="QuitButton" type="Button" parent="WinScreen/VBoxContainer/CenterContainer2/VBoxContainer"]
+margin_top = 24.0
+margin_right = 51.0
+margin_bottom = 44.0
+text = "QUIT"
+
+[node name="PauseScreen" type="ColorRect" parent="."]
+pause_mode = 2
+visible = false
+margin_right = 512.0
+margin_bottom = 300.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color( 0, 0, 0, 0.486275 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="PauseScreen"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="PauseScreen/CenterContainer"]
+margin_left = 235.0
+margin_top = 143.0
+margin_right = 276.0
+margin_bottom = 157.0
+text = "PAUSE"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="PauseScreen"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="PauseScreen/VBoxContainer2"]
+margin_right = 512.0
+margin_bottom = 148.0
+mouse_filter = 2
+size_flags_vertical = 3
+
+[node name="CenterContainer2" type="CenterContainer" parent="PauseScreen/VBoxContainer2"]
+margin_top = 152.0
+margin_right = 512.0
+margin_bottom = 300.0
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseScreen/VBoxContainer2/CenterContainer2"]
+margin_left = 216.0
+margin_top = 40.0
+margin_right = 296.0
+margin_bottom = 108.0
+
+[node name="ContinueButton" type="Button" parent="PauseScreen/VBoxContainer2/CenterContainer2/VBoxContainer"]
+margin_right = 80.0
+margin_bottom = 20.0
+text = "CONTINUE"
+
+[node name="MenuButton" type="Button" parent="PauseScreen/VBoxContainer2/CenterContainer2/VBoxContainer"]
+margin_top = 24.0
+margin_right = 80.0
+margin_bottom = 44.0
+text = "MENU"
+
+[node name="QuitButton" type="Button" parent="PauseScreen/VBoxContainer2/CenterContainer2/VBoxContainer"]
+margin_top = 48.0
+margin_right = 80.0
+margin_bottom = 68.0
+text = "QUIT"
+[connection signal="pressed" from="LoseScreen/VBoxContainer/CenterContainer2/VBoxContainer/TryAgainButton" to="." method="_on_TryAgainButton_pressed"]
+[connection signal="pressed" from="LoseScreen/VBoxContainer/CenterContainer2/VBoxContainer/MenuButton" to="." method="_on_MenuButton_pressed"]
+[connection signal="pressed" from="LoseScreen/VBoxContainer/CenterContainer2/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
+[connection signal="pressed" from="WinScreen/VBoxContainer/CenterContainer2/VBoxContainer/MenuButton" to="." method="_on_MenuButton_pressed"]
+[connection signal="pressed" from="WinScreen/VBoxContainer/CenterContainer2/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
+[connection signal="pressed" from="PauseScreen/VBoxContainer2/CenterContainer2/VBoxContainer/ContinueButton" to="." method="_on_ContinueButton_pressed"]
+[connection signal="pressed" from="PauseScreen/VBoxContainer2/CenterContainer2/VBoxContainer/MenuButton" to="." method="_on_MenuButton_pressed"]
+[connection signal="pressed" from="PauseScreen/VBoxContainer2/CenterContainer2/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]

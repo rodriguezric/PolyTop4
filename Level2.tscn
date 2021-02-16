@@ -1,0 +1,98 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Wall.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scripts/Level.gd" type="Script" id=3]
+[ext_resource path="res://music/stage2.ogg" type="AudioStream" id=4]
+[ext_resource path="res://scenes/Goal.tscn" type="PackedScene" id=5]
+[ext_resource path="res://SoundEffects.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/Screens.tscn" type="PackedScene" id=7]
+
+
+
+
+[node name="Level2" type="Node2D"]
+script = ExtResource( 3 )
+number_of_enemies = 15
+next_level = "Level3"
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 256, 152 )
+collision_layer = 2147483649
+collision_mask = 6
+
+[node name="walls" type="Node2D" parent="."]
+
+[node name="Wall" parent="walls" instance=ExtResource( 2 )]
+position = Vector2( 0, 304 )
+scale = Vector2( 1, 19 )
+collision_layer = 4
+collision_mask = 11
+
+[node name="Wall2" parent="walls" instance=ExtResource( 2 )]
+position = Vector2( 16, 304 )
+scale = Vector2( 31, 1 )
+collision_layer = 4
+collision_mask = 11
+
+[node name="Wall3" parent="walls" instance=ExtResource( 2 )]
+position = Vector2( 16, 16 )
+scale = Vector2( 31, 1 )
+collision_layer = 4
+collision_mask = 11
+
+[node name="Wall4" parent="walls" instance=ExtResource( 2 )]
+position = Vector2( 496, 288 )
+scale = Vector2( 1, 17 )
+collision_layer = 4
+collision_mask = 11
+
+[node name="UI" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Screens" parent="UI" instance=ExtResource( 7 )]
+
+[node name="Spawners" type="Node2D" parent="."]
+
+[node name="Spawn1" type="Node2D" parent="Spawners"]
+position = Vector2( 128, 64 )
+
+[node name="Spawn2" type="Node2D" parent="Spawners"]
+position = Vector2( 384, 64 )
+
+[node name="Spawn3" type="Node2D" parent="Spawners"]
+position = Vector2( 128, 256 )
+
+[node name="Spawn4" type="Node2D" parent="Spawners"]
+position = Vector2( 384, 256 )
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="SpawnTimer" type="Timer" parent="Timers"]
+wait_time = 0.8
+autostart = true
+
+[node name="WarmUpTimer" type="Timer" parent="Timers/SpawnTimer"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+autoplay = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+current = true
+
+[node name="Goal" parent="." instance=ExtResource( 5 )]
+visible = false
+position = Vector2( 256, 56 )
+
+[node name="SoundEffects" parent="." instance=ExtResource( 6 )]
+[connection signal="death" from="Player" to="." method="_on_Player_death"]
+[connection signal="pause_game" from="Player" to="." method="_on_Player_pause_game"]
+[connection signal="try_again" from="UI/Screens" to="." method="_on_Screens_try_again"]
+[connection signal="timeout" from="Timers/SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
