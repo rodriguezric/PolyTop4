@@ -8,13 +8,15 @@ func _physics_process(delta: float) -> void:
 	yield(get_tree(), "idle_frame")
 	
 	if get_player():
-		look_at_player()
+		if get_parent().can_move:
+			look_at_player()
 	
 	if not enabled:
 		return
 		
 	if get_player():
-		get_parent().move_local_x(speed * delta)
+		if get_parent().can_move:
+			get_parent().move_local_x(speed * delta)
 
 
 func look_at_player() -> void:

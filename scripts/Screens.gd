@@ -1,8 +1,5 @@
 extends CanvasLayer
 
-signal try_again
-
-
 onready var pause_screen = $PauseScreen
 onready var lose_screen = $LoseScreen
 onready var win_screen = $WinScreen
@@ -50,4 +47,4 @@ func _on_QuitButton_pressed() -> void:
 
 
 func _on_TryAgainButton_pressed() -> void:
-	emit_signal("try_again")
+	get_tree().reload_current_scene()

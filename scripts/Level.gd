@@ -1,6 +1,6 @@
 extends Node2D
 
-const Enemy = preload("res://scenes/Enemy.tscn")
+const EnemyScene = preload("res://scenes/Enemy.tscn")
 const ChaseBehavior = preload("res://scripts/Behaviors/ChaseBehavior.tscn")
 
 onready var player = $Player
@@ -47,7 +47,7 @@ func get_random_spawn_point() -> Vector2:
 
 func spawn_enemy() -> void:
 	var spawn_point = get_random_spawn_point()
-	var enemy = Enemy.instance()
+	var enemy = EnemyScene.instance()
 	enemy.position = spawn_point
 	enemy.set_player(player)
 	enemy.connect("death", self, "_on_Enemy_death")
@@ -92,10 +92,6 @@ func goto_next_level() -> void:
 
 func _on_Goal_body_entered(body: Node) -> void:
 	goto_next_level()
-
-
-func _on_Screens_try_again() -> void:
-	get_tree().reload_current_scene()
 
 
 func _on_Player_pause_game() -> void:

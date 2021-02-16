@@ -5,9 +5,11 @@ signal pause_game
 signal death
 
 onready var gun = $Gun
+onready var animation_player = $AnimationPlayer
 onready var shoot_sound = $ShootSound
 onready var empty_sound = $EmptySound
 onready var hurt_sound = $HurtSound
+onready var hurt_timer = $HurtTimer
 
 export (int) var health = 3
 export (int) var speed = 3
@@ -17,6 +19,7 @@ export (Resource) var bullet_resource
 var motion : Vector2
 var look : Vector2
 var live_bullets : int = 0
+var invulnerable : bool = false
 
 
 func _handle_directions() -> void:
@@ -42,7 +45,6 @@ func _handle_attack() -> void:
 
 
 func _handle_look() -> void:
-#	look_at(get_global_mouse_position())
 	if Input.is_action_pressed("look_left"):
 		look.x -= 1
 	
@@ -97,12 +99,25 @@ func shoot_bullet() -> void:
 
 
 func damage(amount: int) -> void:
+	if invulnerable:
+		return
+	
+	invulnerable = true
+	hurt_timer.start()
+	animation_player.play("Hurt")
+	
 	hurt_sound.play()
+	
 	health -= amount
-	if health <= 0:
-		destroy()
 
 
 func destroy() -> void:
 	emit_signal("death")
 	queue_free()
+
+
+func _on_HurtTimer_timeout() -> void:
+	invulnerable = false
+	
+	if health <= 0:
+		destroy()
