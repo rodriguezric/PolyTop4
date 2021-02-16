@@ -1,6 +1,6 @@
 extends Node2D
 
-const Enemy = preload("res://Enemy.tscn")
+const Enemy = preload("res://scenes/Enemy.tscn")
 const ChaseBehavior = preload("res://scripts/Behaviors/ChaseBehavior.tscn")
 
 onready var player = $Player
