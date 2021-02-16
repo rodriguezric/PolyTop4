@@ -8,9 +8,6 @@
 [ext_resource path="res://SoundEffects.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/Screens.tscn" type="PackedScene" id=7]
 
-
-
-
 [node name="Level2" type="Node2D"]
 script = ExtResource( 3 )
 number_of_enemies = 15
@@ -94,5 +91,4 @@ position = Vector2( 256, 56 )
 [node name="SoundEffects" parent="." instance=ExtResource( 6 )]
 [connection signal="death" from="Player" to="." method="_on_Player_death"]
 [connection signal="pause_game" from="Player" to="." method="_on_Player_pause_game"]
-[connection signal="try_again" from="UI/Screens" to="." method="_on_Screens_try_again"]
 [connection signal="timeout" from="Timers/SpawnTimer" to="." method="_on_SpawnTimer_timeout"]

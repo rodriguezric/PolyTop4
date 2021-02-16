@@ -89,5 +89,4 @@ position = Vector2( 256, 56 )
 
 [node name="SoundEffects" parent="." instance=ExtResource( 6 )]
 [connection signal="death" from="Player" to="." method="_on_Player_death"]
-[connection signal="pause_game" from="Player" to="." method="_on_Player_pause_game"]
 [connection signal="timeout" from="Timers/SpawnTimer" to="." method="_on_SpawnTimer_timeout"]

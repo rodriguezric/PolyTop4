@@ -23,6 +23,7 @@ export var next_level: String = "WIN"
 
 func _ready() -> void:
 	spawners = [spawn1, spawn2, spawn3, spawn4]
+	player.connect("pause_game", self, "_on_Player_pause_game")
 
 
 func _on_Bullet_hit_enemy(enemy: Enemy, damage: int) -> void:
@@ -82,11 +83,12 @@ func _on_Enemy_death() -> void:
 func show_goal() -> void:
 	goal.connect("body_entered", self, "_on_Goal_body_entered")
 	goal.visible = true
+	goal.open_door()
 
 
 func goto_next_level() -> void:
 	if next_level == "WIN":
-		print("YOU WIN")
+		screens.show_win_screen()
 	else:
 		get_tree().change_scene("res://" + next_level + ".tscn")
 

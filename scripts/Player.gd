@@ -77,6 +77,7 @@ func _physics_process(delta):
 	
 	move_and_collide(motion)
 	_handle_look()
+	_handle_pause()
 
 
 func can_shoot():

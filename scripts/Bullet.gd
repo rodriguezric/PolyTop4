@@ -22,6 +22,8 @@ func _physics_process(delta: float) -> void:
 
 func _on_Bullet_area_entered(area: Area2D) -> void:
 	if area is Enemy:
+		if area.dead: 
+			return
 		emit_signal("hit_enemy", area, damage)
 	
 	destroy()

@@ -10,6 +10,7 @@
 
 [node name="Level3" type="Node2D"]
 script = ExtResource( 3 )
+number_of_enemies = 25
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 256, 152 )
