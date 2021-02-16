@@ -62,11 +62,14 @@ func destroy():
 
 
 func _on_Enemy_body_entered(body: Node) -> void:
+	if dead:
+		return 
+
 	if body is Player:
 		body.damage(attack)
 		
 	if body.is_in_group("wall"):
-		print("hitting wall")
+		return
 
 
 func _on_HurtTimer_timeout() -> void:
