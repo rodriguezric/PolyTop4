@@ -3,6 +3,7 @@ class_name Player
 
 signal pause_game
 signal death
+signal hurt
 
 onready var gun = $Gun
 onready var animation_player = $AnimationPlayer
@@ -85,7 +86,7 @@ func can_shoot():
 
 
 func _on_Bullet_destroyed():
-	live_bullets -= 1
+	live_bullets = max(0, live_bullets - 1)
 
 
 func shoot_bullet() -> void:
@@ -110,6 +111,7 @@ func damage(amount: int) -> void:
 	hurt_sound.play()
 	
 	health -= amount
+	emit_signal("hurt")
 
 
 func destroy() -> void:

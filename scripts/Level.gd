@@ -71,6 +71,7 @@ func show_lose_screen() -> void:
 
 
 func _on_Player_death() -> void:
+	update_deaths()
 	show_lose_screen()
 
 
@@ -98,3 +99,12 @@ func _on_Goal_body_entered(body: Node) -> void:
 
 func _on_Player_pause_game() -> void:
 	screens.show_pause_screen()
+
+
+func update_deaths() -> void:
+	GameVariables.deaths += 1
+	screens.update_deaths()
+
+
+func _on_Player_hurt() -> void:
+	screens.update_health(player.health)
